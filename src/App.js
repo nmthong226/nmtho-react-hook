@@ -3,14 +3,18 @@ import './App.css';
 import Nav from './views/Nav.js';
 
 function App() {
-  let link = 'https://khoahoc.tv/dan-ca-map-dau-bua-tu-tap-khi-trang-tron-chuyen-gi-xay-ra-129706';
+  const HandleClick = (event) => {
+    console.log('>>>> Click me', event.target.value);
+  }
+
   return (
     <div className="App">
       <Nav />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>NguyenMinhThong creating Website</h1>
-        <a href = {link} target = "_blank">Science</a>
+        <input type = "text" value = "MinhThong" onClick={(event) => HandleClick(event)}/>
+        <button type = "button" onClick={(event) => HandleClick(event)}>Click me</button>
       </header>
     </div>
   );
