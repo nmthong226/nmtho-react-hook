@@ -2,21 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  let link = 'https://khoahoc.tv/dan-ca-map-dau-bua-tu-tap-khi-trang-tron-chuyen-gi-xay-ra-129706';
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>NguyenMinhThong creating Website</h1>
+        <a href = {link} target = "_blank">Science</a>
       </header>
     </div>
   );
