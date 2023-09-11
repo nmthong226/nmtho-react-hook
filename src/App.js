@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Nav from './views/Nav.js';
 import { useState } from 'react'
+import Todo from './views/Todo.js';
 
 function App() {
   let [name, setName] = useState('Minh Thong');
@@ -35,13 +36,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>{name}'s creating Website</h1>
-        <div className = "Task Container">
-          {ToDos.map(ToDos => {
-            return (
-              <li className='Task Child' key = {ToDos.ID}> {ToDos.title} </li>
-            )
-          })}
-        </div>
+        <Todo myData = {ToDos} />
         <input type = "text" value = {address} onChange={(event) => HandleOnChange(event)}/>
         <button type = "button" onClick={(event) => HandleClick(event)}>Click me</button> 
       </header>
