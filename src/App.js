@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import Nav from './views/Nav.js';
-import { useState } from 'react'
-import Todo from './views/Todo.js';
+import { useState, useEffect } from 'react'
+import Covid from './views/Covid.js'
 
 function App() {
   let [name, setName] = useState('Minh Thong');
@@ -15,6 +15,10 @@ function App() {
     {ID: 'todo3', title: 'Playing Game', type: 'nmtho'},
     {ID: 'todo4', title: 'Reading Book', type: 'nmtho'}
   ]);
+  //**************************USE EFFECT */
+  useEffect(() => {
+    console.log('===> run use effect');
+  }, [address])
 
   const HandleClick = (event) => {
     if (!address)
@@ -42,10 +46,7 @@ function App() {
       <Nav />
         <img src={logo} className="App-logo" alt="logo" />
         <h1>{name}'s creating Website</h1>
-        <Todo myData = {ToDos} title = "All todos" DeleteToDo = {DeleteToDo} />
-        <Todo myData = {ToDos.filter(item => item.type === "MT")} title = "MT Todo" DeleteToDo = {DeleteToDo} />
-        <input type = "text" value = {address} onChange={(event) => HandleOnChange(event)}/>
-        <button type = "button" onClick={(event) => HandleClick(event)}>Click me</button> 
+        <Covid title ='Covid Table'/>
       </header>
     </div>
   );

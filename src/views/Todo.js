@@ -12,7 +12,7 @@ const Todo = (props) => {
             {ToDos.map(ToDos => {
                 return (
                 <div key = {ToDos.ID}> 
-                    <li className='Task Child' > {ToDos.title} 
+                    <li className='Task Child'> {ToDos.title} 
                     &nbsp; &nbsp; <span onClick={() => HandleDelete(ToDos.ID)}>x</span> </li>
                 </div>
                 )
