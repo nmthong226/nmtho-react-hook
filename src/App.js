@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Nav from './views/Nav.js';
 import { useState, useEffect } from 'react'
-import Covid from './views/Covid.js'
+import WeatherForecast from './views/WeatherForecast'
 
 function App() {
   let [name, setName] = useState('Minh Thong');
@@ -46,7 +46,7 @@ function App() {
       <Nav />
         <img src={logo} className="App-logo" alt="logo" />
         <h1>{name}'s creating Website</h1>
-        <Covid title ='Covid Table'/>
+        <WeatherForecast title ='Weather Forecast Table'/>
       </header>
     </div>
   );
