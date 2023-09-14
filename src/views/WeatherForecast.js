@@ -1,38 +1,11 @@
 import '../views/Table.scss'
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import useFetch from '../customize/Fetch.js'
 
 const WeatherForecast = () => {
-
-  const [DataTmp, setDataTmp] = useState([]);
-  const [DataTmp2, setDataTmp2] = useState([]);
-  const [Loading, setLoading] = useState(true);
-  const [isError, setIsErr] = useState(false);
-
-  async function fetchData() {
-    try{
-      let response = await axios('https://api.openweathermap.org/data/2.5/weather?id=1566083&appid=ad0e1f9d4eed22b12cd1ced1ac97a2d5');
-      let response2 = await axios('https://api.openweathermap.org/data/2.5/weather?id=1581130&appid=ad0e1f9d4eed22b12cd1ced1ac97a2d5');
-      let data = response && response.data ? response.data: [];
-      let data2 = response2 && response2.data ? response2.data: [];
-      console.log(response.data);
-      setDataTmp(data);
-      setDataTmp2(data2);
-
-      setLoading(false);
-      setIsErr(false);
-    }
-    catch(e){
-      setLoading(false);
-      setIsErr(true);
-    }
-  }
-
-  useEffect(() => {
-      setTimeout(async () => {
-        fetchData();
-      }, 2000);
-  }, []);
+  const {dataTmp: DataWeather, isError, isLoading} = useFetch('https://api.openweathermap.org/data/2.5/weather?id=1566083&appid=ad0e1f9d4eed22b12cd1ced1ac97a2d5');
+  // let DataWeather = useFetch(url).data;
+  // let isError = useFetch(url).isError;
+  // let isLoading = useFetch(url).isLoading;
   return(
     <table>
         <thead>
@@ -44,24 +17,16 @@ const WeatherForecast = () => {
           </tr>
         </thead>
         <tbody>
-            {(isError === false && Loading === false)
+            {(isError === false && isLoading === false)
               &&
-              <tr key ={DataTmp.id}>
-                  <td>{DataTmp.name}</td>
-                  <td>{DataTmp?.main?.temp_max}</td>
-                  <td>{DataTmp?.main?.humidity}</td>
-                  <td>{DataTmp?.wind?.speed}</td>
+              <tr key ={DataWeather.id}>
+                  <td>{DataWeather.name}</td>
+                  <td>{DataWeather?.main?.temp_max}</td>
+                  <td>{DataWeather?.main?.humidity}</td>
+                  <td>{DataWeather?.wind?.speed}</td>
               </tr>
             }
-            {(isError === false && Loading === false) &&
-            <tr key ={DataTmp2.id}>
-                  <td>{DataTmp2.name}</td>
-                  <td>{DataTmp2?.main?.temp_max}</td>
-                  <td>{DataTmp2?.main?.humidity}</td>
-                  <td>{DataTmp2?.wind?.speed}</td>
-            </tr>
-            }
-            {(Loading === true) &&
+            {(isLoading === true) &&
               <tr>
                 <td  colSpan = '5' style ={{textAlign: 'center'}}>
                   Loading...
