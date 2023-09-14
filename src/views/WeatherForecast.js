@@ -11,8 +11,8 @@ const WeatherForecast = () => {
 
   async function fetchData() {
     try{
-      let response = await axios('https://api.openweathermap.org/data/2.5/weather?id=1566083&appid=ad0e1f9d4eed22b12cd1ced1ac97a2d5');
-      let response2 = await axios('https://api.openweathermap.org/data/2.5/weather?id=1581130&appid=ad0e1f9d4eed22b12cd1ced1ac97a2d5');
+      let response = await axios('https://api.openweathermap.org/data/2.5/weather?id=1566083&appid=idTokenHere');
+      let response2 = await axios('https://api.openweathermap.org/data/2.5/weather?id=1581130&appid=idTokenHere');
       let data = response && response.data ? response.data: [];
       let data2 = response2 && response2.data ? response2.data: [];
       console.log(response.data);
