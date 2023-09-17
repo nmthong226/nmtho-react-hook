@@ -5,13 +5,12 @@ const useFetch = (url) => {
     const [dataTmp, setData] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const [isError, setIsErr] = useState(false);
-
     const ourRequest = axios.CancelToken.source(); 
     useEffect(() => {
       setTimeout(async () => {
           fetchData(url);
       }, 2000);
-  }, [url]);
+    }, [url]);
   
     async function fetchData(url) {
       try{
@@ -32,14 +31,13 @@ const useFetch = (url) => {
           setLoading(false);
           setIsErr(true);
         }
-      }
-      return () => {
-        ourRequest.cancel('Operation canceled by the user');
+        return () => {
+          ourRequest.cancel('Operation canceled by the user');
+        }
       }
     }
-
-    return{
-        dataTmp, isError, isLoading
-    }
+  return{
+    dataTmp, isError, isLoading
+  }
 }
 export default useFetch;

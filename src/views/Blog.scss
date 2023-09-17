@@ -1,0 +1,27 @@
+.blog-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .single-blog{
+        border: 1px solid grey;
+        border-radius: 3px;
+        padding: 10px;
+        margin: 0px 10px;
+        max-width: calc(100vw / 3.5);
+        gap: 10px;
+        flex-wrap: wrap;
+        text-align: left !important;
+        .title{
+            padding: 10px 0;
+            font-size: 24px;
+            font-weight: 600;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: rgba(244, 102, 147, 0.733);
+        }
+        .content{
+            padding: 10px 0;
+        }
+    }
+}
